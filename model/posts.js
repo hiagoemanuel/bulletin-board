@@ -4,7 +4,6 @@ module.exports = {
             id: 'SDawWOnmWR',
             title: 'board test',
             discription: 'this is the dicription'
-
         }
     ],
     getAll() {

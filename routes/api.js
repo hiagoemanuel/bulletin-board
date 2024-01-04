@@ -4,7 +4,6 @@ const posts = require('../model/posts')
 const router = express.Router()
 
 router.get('/all', (req, res) => {
-    console.log(posts.getAll())
     res.json(JSON.stringify(posts.getAll()))
 })
 
