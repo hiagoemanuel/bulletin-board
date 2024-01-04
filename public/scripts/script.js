@@ -1,8 +1,5 @@
-const title = document.getElementById('title')
-const desc = document.getElementById('desc')
-
-const handleApiPosts = async (action) => {
-    const res = await fetch(`http://localhost:3000/api/${action}`)
+const handleApiPosts = async (action, options) => {
+    const res = await fetch(`http://localhost:3000/api/${action}`, options)
     const json = await res.json()
     return JSON.parse(json)
 }
@@ -32,8 +29,19 @@ const updatePosts = async () => {
     document.getElementById('posts').innerHTML = postElements
 }
 
-const newPost = () => {
-    console.log('test')
+const newPost = async () => {
+    const title = document.getElementById('title').value
+    const discription = document.getElementById('desc').value
+
+    handleApiPosts('new', {
+        method: 'POST',
+        headers: new Headers({ "Content-Type": "application/json" }),
+        body: JSON.stringify({ title, discription })
+    })
+
+    updatePosts()
+    document.getElementById('title').value = ''
+    document.getElementById('desc').value = ''
 }
 
 document.addEventListener('DOMContentLoaded', updatePosts)
