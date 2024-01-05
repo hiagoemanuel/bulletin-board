@@ -12,7 +12,8 @@ router.post('/new', express.json(), (req, res) => {
     const discription = req.body.discription
 
     posts.newPost(title, discription)
-
+    
+    res.type('txt')
     res.send('post sent')
 })
 
@@ -21,6 +22,7 @@ router.delete('/delete', express.json(), (req, res) => {
 
     posts.deletePost(id)
 
+    res.type('txt')
     res.send('post deleted')
 })
 
