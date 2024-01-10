@@ -11,4 +11,5 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.listen(port, () => {
     console.clear()
     console.log('[SERVER PORT]:', port)
+    console.log(`[SERVER LINK]: http://localhost:${port}`)
 })

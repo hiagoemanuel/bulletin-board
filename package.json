@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hiagoemanuel/bulletin-board#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2"
   }
 }

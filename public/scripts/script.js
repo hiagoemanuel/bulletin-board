@@ -1,5 +1,5 @@
 const handleApiPosts = async (action, options) => {
-    const res = await fetch(`http://localhost:3000/api/${action}`, options)
+    const res = await fetch(`http://172.30.69.208:3000/api/${action}`, options)
     const contentType = res.headers.get('Content-Type')
 
     if (contentType === 'application/json; charset=utf-8') {
@@ -33,31 +33,31 @@ const updatePosts = async () => {
     document.getElementById('posts').innerHTML = postElements
 }
 
-const newPost = () => {
+const newPost = async () => {
     const title = document.getElementById('title').value
     const discription = document.getElementById('desc').value
 
-    handleApiPosts('new', {
+    await handleApiPosts('new', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, discription })
     })
 
-    updatePosts()
+    await updatePosts()
     document.getElementById('title').value = ''
     document.getElementById('desc').value = ''
 }
 
-const deletePost = (e) => {
+const deletePost = async (e) => {
     const id = e.offsetParent.id
 
-    handleApiPosts('delete', {
+    await handleApiPosts('delete', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id })
     })
 
-    updatePosts()
+    await updatePosts()
 }
 
 document.addEventListener('DOMContentLoaded', updatePosts)
